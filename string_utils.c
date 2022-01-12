@@ -11,18 +11,23 @@
 char *str_trim(char *str)
 {
 	size_t len = strlen(str);
+	char *dup;
 
 	if (str == NULL)
 		return (NULL);
 	if (len == 0)
 		return (str);
 
-	while (isspace(str[len - 1]))
+	while (isspace(str[len - 1])) /*delete space after*/
+	{
 		len--;
-	while (*str && isspace(*str))
+	}
+
+	while (*str && isspace(*str)) /*delete spaces before*/
 	{
 		str++;
 		len--;
 	}
-	return strndup(str, len);
+	dup = strndup(str, len);
+	return (dup);
 }

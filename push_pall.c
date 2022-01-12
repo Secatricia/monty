@@ -11,7 +11,7 @@
 void push_stack(stack_t **head, unsigned int number)
 {
 	if (!*head && number)
-		printf("salut\n");
+		printf("%d\n",VALUE);
 }
 
 /**
