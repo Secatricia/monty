@@ -51,7 +51,7 @@ void pint(stack_t **head, unsigned int number)
 
 	if (i == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty", number);
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", number);
 		exit(EXIT_FAILURE);
 	}
 
