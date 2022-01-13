@@ -113,3 +113,35 @@ void mod(stack_t **head, unsigned int number)
 	ptr->prev->n = ptr->prev->n % ptr->n;
 	delete_dnodeint_at_index(head, n - 1);
 }
+
+/**
+ * pchar - Prints the char at the top of the stack
+ * @head: pointer of pointer
+ * @number: int
+ *
+ * Return: Void
+ */
+
+void pchar(stack_t **head, unsigned int number)
+{
+	stack_t *ptr;
+
+	if (*head == NULL || head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", number);
+		exit(EXIT_FAILURE);
+	}
+
+	ptr = *head;
+
+	while (ptr->next)
+		ptr = ptr->next;
+
+	if (ptr->n <= 0 || ptr->n >= 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", number);
+		exit(EXIT_FAILURE);
+	}
+	else
+		printf("%c\n", ptr->n);
+}

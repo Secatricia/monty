@@ -23,6 +23,7 @@ void (*getinst(int lin))(stack_t **sck, unsigned int lin)
 	    {"div", Div},
 	    {"mul", mul},
 	    {"mod", mod},
+	    {"pchar", pchar},
 	    {NULL, NULL},
 	};
 

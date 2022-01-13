@@ -66,6 +66,7 @@ void nop(stack_t **head, unsigned int number);
 void sub(stack_t **head, unsigned int number);
 void Div(stack_t **, unsigned int);
 void mul(stack_t **, unsigned int);
+void pchar(stack_t **, unsigned int);
 void mod(stack_t **head, unsigned int number);
 
 void (*getinst(int))(stack_t **, unsigned int);
