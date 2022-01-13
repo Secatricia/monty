@@ -47,7 +47,7 @@ void add(stack_t **head, unsigned int number)
 
 	if (sizeLinkedList(*head) < 2)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", number);
+		fprintf(stderr, "L%d: can't add, stack too short\n", number);
 		free(arguments);
 		fclose(file);
 		free(copy);
