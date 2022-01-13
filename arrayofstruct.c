@@ -18,6 +18,7 @@ void (*getinst(int lin))(stack_t **sck, unsigned int lin)
 	    {"pop", pop},
 	    {"swap", swap},
 	    {"add", add},
+	    {"nop", nop},
 	    {NULL, NULL},
 	};
 

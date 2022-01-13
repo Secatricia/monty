@@ -62,6 +62,7 @@ void pint(stack_t **head, unsigned int number);
 void pop(stack_t **head, unsigned int number);
 void swap(stack_t **head, unsigned int number);
 void add(stack_t **head, unsigned int number);
+void nop(stack_t **head, unsigned int number);
 void (*getinst(int))(stack_t **, unsigned int);
 
 int isNumber(char *str);

@@ -63,3 +63,18 @@ void add(stack_t **head, unsigned int number)
 	ptr->prev->n = ptr->n + ptr->prev->n;
 	delete_dnodeint_at_index(head, n - 1);
 }
+
+/**
+ * nop - sert a rien
+ * @head: pointer of pointer
+ * @number: int
+ *
+ * Return: Void
+ */
+
+void nop(stack_t **head, unsigned int number)
+{
+	number = number;
+	*head = *head;
+	return;
+}
