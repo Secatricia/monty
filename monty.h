@@ -51,11 +51,11 @@ void free_dlistint(stack_t *head);
 
 /* Str functions */
 char *str_trim(char *str);
+char **splitArgs(char *str);
 
 /* Stack functions */
 void push_stack(stack_t **head, unsigned int number);
 void pall(stack_t **head, unsigned int number);
-
 void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number);
 
 #endif
