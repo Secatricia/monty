@@ -61,3 +61,25 @@ void pint(stack_t **head, unsigned int number)
 	}
 	printf("%d\n", i->n);
 }
+
+/**
+ * pop - Delete the node at the top of the stack
+ * @head: pointer of pointer
+ * @number: int
+ *
+ * Return: Void
+ */
+
+void pop(stack_t **head, unsigned int number)
+{
+	int n;
+
+	if (*head == NULL || head == NULL)
+	{
+		fprintf(stderr, "L%d : can't pop an empty stack\n", number);
+		exit(EXIT_FAILURE);
+	}
+
+	n = sizeLinkedList(*head);
+	delete_dnodeint_at_index(head, n - 1);
+}

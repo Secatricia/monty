@@ -47,6 +47,8 @@ typedef struct instruction_s
 size_t print_dlistint(const stack_t *h);
 stack_t *add_dnodeint(stack_t **head, const int n);
 stack_t *add_dnodeint_end(stack_t **head, const int n);
+size_t sizeLinkedList(const stack_t *h);
+int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void free_dlistint(stack_t *head);
 
 /* Str functions */
@@ -57,6 +59,7 @@ char **splitArgs(char *str);
 void push_stack(stack_t **head, unsigned int number);
 void pall(stack_t **head, unsigned int number);
 void pint(stack_t **head, unsigned int number);
+void pop(stack_t **head, unsigned int number);
 void (*getinst(int, FILE *, char *))(stack_t **, unsigned int);
 
 int isNumber(char *str);

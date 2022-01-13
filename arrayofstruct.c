@@ -17,6 +17,7 @@ void (*getinst(int lin, FILE *fil, char *cpy))(stack_t **sck, unsigned int lin)
 	    {"push", push_stack},
 	    {"pall", pall},
 	    {"pint", pint},
+	    {"pop", pop},
 	    {NULL, NULL},
 	};
 
