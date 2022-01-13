@@ -59,6 +59,8 @@ void pall(stack_t **head, unsigned int number);
 void pint(stack_t **head, unsigned int number);
 void (*get_instruction(int))(stack_t **stack, unsigned int line_number);
 
+int isNumber(char *str);
+
 char **arguments;
 
 #endif
