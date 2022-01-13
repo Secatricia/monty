@@ -13,11 +13,15 @@ size_t print_dlistint(const stack_t *h)
 
 	if (h)
 	{
+		while (h->next)
+		{
+			h = h->next;
+			nbNodes++;
+		}
 		while (h)
 		{
 			printf("%d\n", h->n);
-			h = h->next;
-			nbNodes++;
+			h = h->prev;
 		}
 	}
 	return (nbNodes);

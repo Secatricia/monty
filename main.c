@@ -10,7 +10,7 @@
 
 int main(int argc, char **argv)
 {
-	int count = 0;
+	int numline = 0;
 	char *current, line[80] = {0}; /*initialisation*/
 	FILE *file;
 	stack_t *head;
@@ -30,13 +30,12 @@ int main(int argc, char **argv)
 
 	while (fgets(line, 80, file))
 	{
-		count ++;
+		numline++;
 		current = str_trim(line); /*trim spaces*/
-		printf("%s\n",current);
-		get_instruction(current)(&head, count);
+		get_instruction(current)(&head, numline);
 		free(current);
 	}
-
+	free_dlistint(head);
 	fclose(file);
 
 	return (0);
