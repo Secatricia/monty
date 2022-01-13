@@ -16,6 +16,7 @@ void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number)
 	instruction_t instructions[] = {
 	    {"push", push_stack},
 	    {"pall", pall},
+	    {"pint", pint},
 	    {NULL, NULL},
 	};
 

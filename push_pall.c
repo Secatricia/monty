@@ -28,3 +28,15 @@ void pall(stack_t **head, unsigned int number __attribute__((unused)))
 		print_dlistint(*head);
 	}
 }
+
+void pint(stack_t **head, unsigned int number __attribute__((unused)))
+{
+	if (*head)
+	{
+		while ((*head)->next)
+		{
+			(*head) = (*head)->next;
+		}
+		printf("%d\n", (*head)->n);
+	}
+}

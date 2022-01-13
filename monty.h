@@ -56,6 +56,7 @@ char **splitArgs(char *str);
 /* Stack functions */
 void push_stack(stack_t **head, unsigned int number);
 void pall(stack_t **head, unsigned int number);
+void pint(stack_t **head, unsigned int number);
 void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number);
 
 #endif
