@@ -28,12 +28,7 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file <file>\n");
 		exit(EXIT_FAILURE);
 	}
-	arguments = malloc(sizeof(char *) * 3);
-	if (arguments == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+
 	while (fgets(line, 80, file))
 	{
 		numline++;
@@ -41,9 +36,10 @@ int main(int argc, char **argv)
 		if (strlen(copy) != 0)
 		{
 			arguments = splitArgs(line);
-			get_instruction(numline)(&head, numline);
+			get_instruction(numline, file, copy)(&head, numline);
 			free(arguments);
 		}
+		free(copy);
 	}
 	free_dlistint(head);
 	fclose(file);

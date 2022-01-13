@@ -11,7 +11,6 @@
 char *str_trim(char *str)
 {
 	size_t len = strlen(str);
-	char *dup;
 
 	if (str == NULL)
 		return (NULL);
@@ -28,6 +27,5 @@ char *str_trim(char *str)
 		str++;
 		len--;
 	}
-	dup = strndup(str, len);
-	return (dup);
+	return strndup(str, len);
 }

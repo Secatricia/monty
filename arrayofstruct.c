@@ -7,7 +7,7 @@
  * Return: Void
  */
 
-void (*get_instruction(int nline))(stack_t **stack, unsigned int line_number)
+void (*get_instruction(int nline, FILE *file, char *copy))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 
@@ -24,8 +24,9 @@ void (*get_instruction(int nline))(stack_t **stack, unsigned int line_number)
 			return (instructions[i].f);
 		i++;
 	}
-
 	fprintf(stderr, "L%d: unknown instruction %s\n", nline, arguments[0]);
+	fclose(file);
+	free(copy);
 	free(arguments);
 	exit(EXIT_FAILURE);
 }
@@ -39,12 +40,11 @@ void (*get_instruction(int nline))(stack_t **stack, unsigned int line_number)
 
 char **splitArgs(char *str)
 {
-	char **arg;
 	char *tok;
 	int i = 0;
 
-	arg = malloc(sizeof(char *) * 3);
-	if (arg == NULL)
+	arguments = malloc(sizeof(char *) * 3);
+	if (arguments == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
@@ -52,12 +52,11 @@ char **splitArgs(char *str)
 	tok = strtok(str, " \t\n");
 	while (i < 2)
 	{
-		arg[i] = tok;
+		arguments[i] = tok;
 		tok = strtok(NULL, " \t\n");
 		i++;
 	}
-
 	arguments[i] = NULL;
 
-	return (arg);
+	return (arguments);
 }
