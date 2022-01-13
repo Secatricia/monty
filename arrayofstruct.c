@@ -7,11 +7,9 @@
  * Return: Number of nodes
  */
 
-void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number)
+void (*get_instruction(int numberline))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
-	char **args;
-	static int line = 1;
 
 	instruction_t instructions[] = {
 	    {"push", push_stack},
@@ -20,29 +18,16 @@ void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number)
 	    {NULL, NULL},
 	};
 
-	args = splitArgs(str);
-
-	if (strcmp(args[0], "push") == 0)
-	{
-		if (args[1] == NULL)
-		{
-			fprintf(stderr, "L<%d>: usage: push integer\n", line++);
-			exit(EXIT_FAILURE);
-		}
-	}
-
-	i = 0;
 	while (instructions[i].f)
 	{
-		if (strcmp(args[0], instructions[i].opcode) == 0)
-		{
-			free(args);
+		if (strcmp(arguments[0], instructions[i].opcode) == 0)
 			return (instructions[i].f);
-		}
 		i++;
 	}
-	free(args);
-	return (NULL);
+
+	fprintf(stderr, "L%d: unknown instruction %s\n", numberline, arguments[0]);
+	free(arguments);
+	exit(EXIT_FAILURE);
 }
 
 char **splitArgs(char *str)
@@ -51,16 +36,18 @@ char **splitArgs(char *str)
 	char *tok;
 	int i = 0;
 
-	arg = malloc(sizeof(char *) * 2);
+	arg = malloc(sizeof(char *) * 3);
 	if (arg == NULL)
 		return (NULL);
-	tok = strtok(str, " ");
-	while (tok)
+	tok = strtok(str, " \t\n");
+	while (i < 2)
 	{
 		arg[i] = tok;
-		tok = strtok(NULL, " ");
+		tok = strtok(NULL, " \t\n");
 		i++;
 	}
+
+	arguments[i] = NULL;
 
 	return (arg);
 }

@@ -11,7 +11,8 @@
 int main(int argc, char **argv)
 {
 	int numline = 0;
-	char *current, line[80] = {0}; /*initialisation*/
+	char line[80] = {0}; /*initialisation*/
+	char *copy;
 	FILE *file;
 	stack_t *head;
 
@@ -28,12 +29,20 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
+	arguments = malloc(sizeof(char *) * 3);
+	if (arguments == NULL)
+		exit(EXIT_FAILURE);
+
 	while (fgets(line, 80, file))
 	{
 		numline++;
-		current = str_trim(line); /*trim spaces*/
-		get_instruction(current)(&head, numline);
-		free(current);
+		copy = str_trim(line);
+		if (strlen(copy) != 0)
+		{
+			arguments = splitArgs(line);
+			get_instruction(numline)(&head, numline);
+			free(arguments);
+		}
 	}
 	free_dlistint(head);
 	fclose(file);

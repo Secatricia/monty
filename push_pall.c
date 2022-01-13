@@ -10,7 +10,14 @@
 
 void push_stack(stack_t **head, unsigned int number)
 {
-	add_dnodeint_end(head, number);
+	if (arguments[1] != NULL)
+		add_dnodeint_end(head, atoi(arguments[1]));
+	else
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", number);
+		free(arguments);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
