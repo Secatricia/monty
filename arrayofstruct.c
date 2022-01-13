@@ -3,13 +3,11 @@
 /**
  * getinst - Gets correct function
  * @lin: int
- * @fil: file
- * @cpy: str
  *
  * Return: Void
  */
 
-void (*getinst(int lin, FILE *fil, char *cpy))(stack_t **sck, unsigned int lin)
+void (*getinst(int lin))(stack_t **sck, unsigned int lin)
 {
 	int i = 0;
 
@@ -29,8 +27,8 @@ void (*getinst(int lin, FILE *fil, char *cpy))(stack_t **sck, unsigned int lin)
 		i++;
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", lin, arguments[0]);
-	fclose(fil);
-	free(cpy);
+	fclose(file);
+	free(copy);
 	free(arguments);
 	exit(EXIT_FAILURE);
 }

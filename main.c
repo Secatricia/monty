@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	file = fopen(argv[1], "r"); /*open file*/
 	if (file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file <file>\n");
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 		if (strlen(copy) != 0)
 		{
 			arguments = splitArgs(line);
-			getinst(numline, file, copy)(&head, numline);
+			getinst(numline)(&head, numline);
 			free(arguments);
 		}
 		free(copy);
