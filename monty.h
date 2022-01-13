@@ -60,6 +60,7 @@ void push_stack(stack_t **head, unsigned int number);
 void pall(stack_t **head, unsigned int number);
 void pint(stack_t **head, unsigned int number);
 void pop(stack_t **head, unsigned int number);
+void swap(stack_t **head, unsigned int number);
 void (*getinst(int, FILE *, char *))(stack_t **, unsigned int);
 
 int isNumber(char *str);
