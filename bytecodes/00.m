@@ -1,3 +1,6 @@
 push 1
-nop
+push 2
+push 0
+push 10
+div
 pall
