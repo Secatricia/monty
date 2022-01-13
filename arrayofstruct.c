@@ -9,8 +9,8 @@
 
 void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number)
 {
-	int i = 0, number;
-	char *tok, **arg;
+	int i = 0;
+	char **args;
 	static int line = 1;
 
 	instruction_t instructions[] = {
@@ -18,6 +18,37 @@ void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number)
 	    {"pall", pall},
 	    {NULL, NULL},
 	};
+
+	args = splitArgs(str);
+
+	if (strcmp(args[0], "push") == 0)
+	{
+		if (args[1] == NULL)
+		{
+			fprintf(stderr, "L<%d>: usage: push integer\n", line++);
+			exit(EXIT_FAILURE);
+		}
+	}
+
+	i = 0;
+	while (instructions[i].f)
+	{
+		if (strcmp(args[0], instructions[i].opcode) == 0)
+		{
+			free(args);
+			return (instructions[i].f);
+		}
+		i++;
+	}
+	free(args);
+	return (NULL);
+}
+
+char **splitArgs(char *str)
+{
+	char **arg;
+	char *tok;
+	int i = 0;
 
 	arg = malloc(sizeof(char *) * 2);
 	if (arg == NULL)
@@ -30,30 +61,5 @@ void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number)
 		i++;
 	}
 
-	if (strcmp(arg[0], "push") == 0)
-	{
-		if (arg[1] == NULL)
-		{
-			fprintf(stderr, "L<%d>: usage: push integer\n", line++);
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			number = atoi(arg[1]);
-			printf("--%d\n", number);
-		}
-	}
-
-	i = 0;
-	while (instructions[i].f)
-	{
-		if (strcmp(arg[0], instructions[i].opcode) == 0)
-		{
-			free(arg);
-			return (instructions[i].f);
-		}
-		i++;
-	}
-	free(arg);
-	return (NULL);
+	return (arg);
 }
