@@ -76,7 +76,7 @@ void pop(stack_t **head, unsigned int number)
 
 	if (*head == NULL || head == NULL)
 	{
-		fprintf(stderr, "L%d : can't pop an empty stack\n", number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", number);
 		exit(EXIT_FAILURE);
 	}
 
