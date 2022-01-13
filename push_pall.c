@@ -10,8 +10,7 @@
 
 void push_stack(stack_t **head, unsigned int number)
 {
-	if (!*head && number)
-		printf("%d\n",VALUE);
+	add_dnodeint_end(head, number);
 }
 
 /**
@@ -24,5 +23,8 @@ void push_stack(stack_t **head, unsigned int number)
 
 void pall(stack_t **head, unsigned int number __attribute__((unused)))
 {
-	print_dlistint(*head);
+	if (*head)
+	{
+		print_dlistint(*head);
+	}
 }

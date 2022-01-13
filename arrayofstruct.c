@@ -2,16 +2,16 @@
 
 /**
  * get_instruction - Prints all elements of a stack_t list.
- * @h: struc stack_t
+ * @str: string
  *
  * Return: Number of nodes
  */
 
 void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number)
 {
-	int i = 0, j = 0;
-	char new[20];
-	char number[20];
+	int i = 0, number;
+	char *tok, **arg;
+	static int line = 1;
 
 	instruction_t instructions[] = {
 	    {"push", push_stack},
@@ -19,32 +19,41 @@ void (*get_instruction(char *str))(stack_t **stack, unsigned int line_number)
 	    {NULL, NULL},
 	};
 
-	while (str[i] != '\0') /*while file*/
+	arg = malloc(sizeof(char *) * 2);
+	if (arg == NULL)
+		return (NULL);
+	tok = strtok(str, " ");
+	while (tok)
 	{
-		if (str[i] == ' ') /*if space*/
-			break;
-		new[i] = str[i];
+		arg[i] = tok;
+		tok = strtok(NULL, " ");
 		i++;
 	}
 
-	while (str[i] != '\0') 
+	if (strcmp(arg[0], "push") == 0)
 	{
-		if ((str[i] < 58) && (str[i] > 47)) /*if it's number*/
+		if (arg[1] == NULL)
 		{
-			number[j] = str[i];
+			fprintf(stderr, "L<%d>: usage: push integer\n", line++);
+			exit(EXIT_FAILURE);
 		}
-		j++;
-		i++;
+		else
+		{
+			number = atoi(arg[1]);
+			printf("--%d\n", number);
+		}
 	}
-	VALUE = atoi(number);
-	new[i] = '\0';
 
 	i = 0;
 	while (instructions[i].f)
 	{
-		if (strcmp(new, instructions[i].opcode) == 0)
+		if (strcmp(arg[0], instructions[i].opcode) == 0)
+		{
+			free(arg);
 			return (instructions[i].f);
+		}
 		i++;
 	}
+	free(arg);
 	return (NULL);
 }
