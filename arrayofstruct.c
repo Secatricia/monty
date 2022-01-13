@@ -26,6 +26,8 @@ void (*getinst(int lin))(stack_t **sck, unsigned int lin)
 	    {NULL, NULL},
 	};
 
+	if (arguments[0][0] == '#')
+		return (nop);
 	while (instructions[i].f)
 	{
 		if (strcmp(arguments[0], instructions[i].opcode) == 0)
