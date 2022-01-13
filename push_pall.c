@@ -36,14 +36,26 @@ void pall(stack_t **head, unsigned int number __attribute__((unused)))
 	}
 }
 
-void pint(stack_t **head, unsigned int number __attribute__((unused)))
+/**
+ * pint - Print value at top of the stack
+ * @head: pointer of pointer
+ * @number: int
+ *
+ * Return: Void
+ */
+
+void pint(stack_t **head, unsigned int number)
 {
-	if (*head)
+	stack_t *i = *head;
+	while (i->next)
 	{
-		while ((*head)->next)
-		{
-			(*head) = (*head)->next;
-		}
-		printf("%d\n", (*head)->n);
+		i = i->next;
+	}
+	printf("%d\n", i->n);
+
+	if (i == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty", number);
+		exit(EXIT_FAILURE);
 	}
 }
