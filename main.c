@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	arguments = malloc(sizeof(char *) * 3);
 	if (arguments == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	while (fgets(line, 80, file))
