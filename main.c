@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 		if (strlen(copy) != 0)
 		{
 			arguments = splitArgs(line);
-			get_instruction(numline, file, copy)(&head, numline);
+			getinst(numline, file, copy)(&head, numline);
 			free(arguments);
 		}
 		free(copy);

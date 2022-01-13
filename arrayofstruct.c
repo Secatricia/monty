@@ -1,13 +1,15 @@
 #include "monty.h"
 
 /**
- * get_instruction - Gets correct function
- * @nline: int
+ * getinst - Gets correct function
+ * @lin: int
+ * @fil: file
+ * @cpy: str
  *
  * Return: Void
  */
 
-void (*get_instruction(int nline, FILE *file, char *copy))(stack_t **stack, unsigned int line_number)
+void (*getinst(int lin, FILE *fil, char *cpy))(stack_t **sck, unsigned int lin)
 {
 	int i = 0;
 
@@ -24,9 +26,9 @@ void (*get_instruction(int nline, FILE *file, char *copy))(stack_t **stack, unsi
 			return (instructions[i].f);
 		i++;
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", nline, arguments[0]);
-	fclose(file);
-	free(copy);
+	fprintf(stderr, "L%d: unknown instruction %s\n", lin, arguments[0]);
+	fclose(fil);
+	free(cpy);
 	free(arguments);
 	exit(EXIT_FAILURE);
 }

@@ -27,5 +27,5 @@ char *str_trim(char *str)
 		str++;
 		len--;
 	}
-	return strndup(str, len);
+	return (strndup(str, len));
 }
