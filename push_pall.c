@@ -49,7 +49,7 @@ void pint(stack_t **head, unsigned int number)
 {
 	stack_t *i = *head;
 
-	if (i == NULL)
+	if (i == NULL || head == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", number);
 		exit(EXIT_FAILURE);
