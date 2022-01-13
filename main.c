@@ -28,11 +28,12 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file <file>\n");
 		exit(EXIT_FAILURE);
 	}
-
 	arguments = malloc(sizeof(char *) * 3);
 	if (arguments == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
-
+	}
 	while (fgets(line, 80, file))
 	{
 		numline++;

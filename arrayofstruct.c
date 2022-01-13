@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * get_instruction - Prints all elements of a stack_t list.
- * @str: string
+ * get_instruction - Gets correct function
+ * @nline: int
  *
- * Return: Number of nodes
+ * Return: Void
  */
 
-void (*get_instruction(int numberline))(stack_t **stack, unsigned int line_number)
+void (*get_instruction(int nline))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 
@@ -25,10 +25,17 @@ void (*get_instruction(int numberline))(stack_t **stack, unsigned int line_numbe
 		i++;
 	}
 
-	fprintf(stderr, "L%d: unknown instruction %s\n", numberline, arguments[0]);
+	fprintf(stderr, "L%d: unknown instruction %s\n", nline, arguments[0]);
 	free(arguments);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * splitArgs - Split the argument into an array
+ * @str: string
+ *
+ * Return: pointer of pointer
+ */
 
 char **splitArgs(char *str)
 {
@@ -38,7 +45,10 @@ char **splitArgs(char *str)
 
 	arg = malloc(sizeof(char *) * 3);
 	if (arg == NULL)
-		return (NULL);
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	tok = strtok(str, " \t\n");
 	while (i < 2)
 	{
