@@ -11,18 +11,23 @@
 void swap(stack_t **head, unsigned int number)
 {
 	int temp;
+	stack_t *ptr;
 
 	if (sizeLinkedList(*head) < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", number);
+		free(arguments);
+		fclose(file);
+		free(copy);
+		free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
 
-	while ((*head)->next)
-	{
-		*head = (*head)->next;
-	}
-	temp = (*head)->n;
-	(*head)->n = (*head)->prev->n;
-	(*head)->prev->n = temp;
+	ptr = *head;
+
+	while (ptr->next)
+		ptr = ptr->next;
+	temp = ptr->n;
+	ptr->n = ptr->prev->n;
+	ptr->prev->n = temp;
 }

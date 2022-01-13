@@ -66,5 +66,7 @@ void (*getinst(int, FILE *, char *))(stack_t **, unsigned int);
 int isNumber(char *str);
 
 char **arguments;
+FILE *file;
+char *copy;
 
 #endif

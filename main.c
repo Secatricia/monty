@@ -12,9 +12,7 @@ int main(int argc, char **argv)
 {
 	int numline = 0;
 	char line[80] = {0}; /*initialisation*/
-	char *copy;
-	FILE *file;
-	stack_t *head;
+	stack_t *head = NULL;
 
 	if (argc != 2) /*if argc does not have the right number of arguments*/
 	{
